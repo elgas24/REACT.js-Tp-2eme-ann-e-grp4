@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import CreateArti from './components/Create-article/CreateArti';
+import AfficheArti from './components/Create-article/AfficheArti';
 
-function App() {
+//Composant principal de l'application
+const App = () => {
+  // État pour stocker la liste des articles
+  const [articles, setArticles] = useState([
+    {
+      name: 'Chaise de bureau',
+      category: 'Mobilier de Bureau',
+      brand: 'ConfortPlus',
+      price: 150,
+      content: 'Cette chaise est confortable.',
+      stock: 75,
+      online: true,
+      pictures: ['chaise1.jpg', 'chaise2.jpg']
+    },
+    
+  ]);
+    
+
+  // Fonction pour ajouter un nouvel article à la liste
+  const addArticle = (article) => {
+    setArticles([...articles, article]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CreateArti addArticle={addArticle} />
+      <AfficheArti articles={articles} />
     </div>
   );
-}
+};
 
 export default App;
