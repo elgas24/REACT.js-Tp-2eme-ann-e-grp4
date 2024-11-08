@@ -41,10 +41,11 @@ const Article = () => {
   }, []);
   //   console.log(users);
   return (
-    <div>
+    <div className="flex flex-col">
       
-      <div>
+      <div className="w-screen space-x-4 flex-nowrap overflow-x-scroll">
         {users.map((data, index) => (
+          <div key={index} className="h-8 w-max flex gap-4">
           <Link to={`/article/${data._id}`}>
           <div>
             <p>name:{data?.name} </p>
@@ -54,7 +55,7 @@ const Article = () => {
             <p>name:{} </p>
             <p>name:{} </p>
             <button onClick={() => handleDelete(data._id)}>delete</button>
-          </div></Link>
+          </div></Link></div>
         ))}
       </div>
       <Link to="/add">
